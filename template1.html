@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Foodie Haven</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Karma">
+  <style>
+    body, h1, h2, h3, h4, h5, h6 {
+      font-family: "Karma", sans-serif;
+      margin: 0;
+    }
+
+    /* Sidebar */
+    .sidebar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 40%;
+      min-width: 300px;
+      height: 100%;
+      background: #fff;
+      box-shadow: 2px 0 5px rgba(0,0,0,0.2);
+      display: none;
+      z-index: 2;
+      animation: slideIn 0.5s ease-in-out;
+    }
+    .sidebar-item {
+      padding: 20px;
+      display: block;
+      text-decoration: none;
+      color: #333;
+      font-size: 1.5rem;
+    }
+    .sidebar-item:hover {
+      background: #f1f1f1;
+    }
+    @keyframes slideIn {
+      from { transform: translateX(-100%); }
+      to { transform: translateX(0); }
+    }
+
+    /* Top Menu */
+    .top-bar {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: #fff;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      z-index: 1;
+    }
+    .top-bar-container {
+      max-width: 1200px;
+      margin: auto;
+      display: flex;
+      align-items: center;
+      padding: 16px;
+      font-size: 1.5rem;
+    }
+    .menu-button {
+      cursor: pointer;
+      padding: 0 16px;
+    }
+    .top-bar-title {
+      flex-grow: 1;
+      text-align: center;
+    }
+    .top-bar-right {
+      padding: 0 16px;
+    }
+
+    /* Main Content */
+    .main-content {
+      max-width: 1200px;
+      margin: 100px auto 0;
+      padding: 32px;
+    }
+
+    /* Photo Grid */
+    .photo-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 16px;
+      padding: 16px;
+      text-align: center;
+    }
+    .grid-item {
+      padding: 16px;
+    }
+    .grid-item img {
+      width: 100%;
+      height: auto;
+      border-radius: 8px;
+    }
+    .grid-item h3 {
+      margin: 10px 0;
+      font-size: 1.5rem;
+    }
+    .grid-item p {
+      color: #555;
+    }
+
+    /* Pagination */
+    .pagination {
+      text-align: center;
+      padding: 32px;
+    }
+    .pagination-bar {
+      display: inline-flex;
+      gap: 5px;
+    }
+    .pagination-item {
+      padding: 8px 16px;
+      text-decoration: none;
+      color: #333;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+    }
+    .pagination-item:hover {
+      background: #f1f1f1;
+    }
+    .pagination-item.active {
+      background: #333;
+      color: #fff;
+      border-color: #333;
+    }
+
+    /* About Section */
+    .about-section {
+      text-align: center;
+      padding: 32px;
+    }
+    .about-section img {
+      max-width: 800px;
+      width: 100%;
+      height: auto;
+      margin: auto;
+      display: block;
+      border-radius: 8px;
+    }
+    .about-content {
+      padding: 32px;
+    }
+    .about-content h4 {
+      font-size: 1.8rem;
+      margin-bottom: 10px;
+    }
+    .about-content h6 {
+      font-style: italic;
+      color: #777;
+      margin-bottom: 20px;
+    }
+
+    /* Footer */
+    .footer {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      padding: 32px;
+      background: #f9f9f9;
+    }
+    .footer-column {
+      flex: 1;
+      min-width: 250px;
+    }
+    .footer-column h3 {
+      font-size: 1.5rem;
+      margin-bottom: 16px;
+    }
+    .blog-list {
+      list-style: none;
+      padding: 0;
+    }
+    .blog-item {
+      display: flex;
+      align-items: center;
+      padding: 16px;
+      border-bottom: 1px solid #ddd;
+    }
+    .blog-item:hover {
+      background: #f1f1f1;
+    }
+    .blog-item img {
+      width: 50px;
+      margin-right: 10px;
+    }
+    .tag-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .tag {
+      padding: 4px 8px;
+      background: #ddd;
+      border-radius: 4px;
+      font-size: 0.9rem;
+    }
+    .tag.primary {
+      background: #333;
+      color: #fff;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 600px) {
+      .sidebar {
+        width: 100%;
+        min-width: auto;
+      }
+      .top-bar-container {
+        font-size: 1.2rem;
+      }
+      .photo-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Sidebar -->
+  <nav class="sidebar" id="mySidebar">
+    <a href="javascript:void(0)" onclick="closeSidebar()" class="sidebar-item">Close Menu</a>
+    <a href="#food" onclick="closeSidebar()" class="sidebar-item">Recipes</a>
+    <a href="#about" onclick="closeSidebar()" class="sidebar-item">About</a>
+  </nav>
+
+  <!-- Top Menu -->
+  <div class="top-bar">
+    <div class="top-bar-container">
+      <div class="menu-button" onclick="openSidebar()">☰</div>
+      <div class="top-bar-title">My Food</div>
+      <div class="top-bar-right">Mail</div>
+    </div>
+  </div>
+  
+  <!-- Main Content -->
+  <div class="main-content">
+    <!-- First Photo Grid -->
+    <div class="photo-grid" id="food">
+      <div class="grid-item">
+        <img src="https://www.w3schools.com/w3images/sandwich.jpg" alt="Sandwich">
+        <h3>Classic NYC Pastrami Sandwich</h3>
+        <p>A savory pastrami sandwich on rye bread with mustard and pickles, a true New York deli staple.</p>
+      </div>
+      <div class="grid-item">
+        <img src="https://www.w3schools.com/w3images/steak.jpg" alt="Steak">
+        <h3>Juicy Grilled Ribeye Steak</h3>
+        <p>Perfectly seared ribeye with a smoky char, served with roasted vegetables.</p>
+      </div>
+      <div class="grid-item">
+        <img src="https://www.w3schools.com/w3images/cherries.jpg" alt="Cherries">
+        <h3>Fresh Cherry Tart</h3>
+        <p>A sweet and tangy cherry tart with a buttery crust, perfect for dessert.</p>
+      </div>
+      <div class="grid-item">
+        <img src="https://www.w3schools.com/w3images/wine.jpg" alt="Pasta and Wine">
+        <h3>Vegetable Pasta with Red Wine</h3>
+        <p>Al dente pasta with fresh vegetables in a rich tomato sauce, paired with robust red wine.</p>
+      </div>
+    </div>
+    
+    <!-- Second Photo Grid -->
+    <div class="photo-grid">
+      <div class="grid-item">
+        <img src="https://www.w3schools.com/w3images/popsicle.jpg" alt="Popsicle">
+        <h3>Homemade Fruit Popsicle</h3>
+        <p>Refreshing strawberry and mango popsicles, perfect for a hot day.</p>
+      </div>
+      <div class="grid-item">
+        <img src="https://www.w3schools.com/w3images/salmon.jpg" alt="Salmon">
+        <h3>Pan-Seared Salmon</h3>
+        <p>Crispy-skinned salmon fillet with a lemon herb sauce, great for healthy eating.</p>
+      </div>
+      <div class="grid-item">
+        <img src="https://www.w3schools.com/w3images/sandwich.jpg" alt="Sandwich">
+        <h3>Turkey Club Sandwich</h3>
+        <p>A triple-decker sandwich with turkey, bacon, lettuce, and tomato.</p>
+      </div>
+      <div class="grid-item">
+        <img src="https://www.w3schools.com/w3images/croissant.jpg" alt="Croissant">
+        <h3>Buttery French Croissant</h3>
+        <p>Flaky, golden croissants fresh from the oven, a French classic.</p>
+      </div>
+    </div>
+
+    <!-- Pagination -->
+    <div class="pagination">
+      <div class="pagination-bar">
+        <a href="#" class="pagination-item">«</a>
+        <a href="#" class="pagination-item active">1</a>
+        <a href="#" class="pagination-item">2</a>
+        <a href="#" class="pagination-item">3</a>
+        <a href="#" class="pagination-item">4</a>
+        <a href="#" class="pagination-item">»</a>
+      </div>
+    </div>
+    
+    <hr id="about">
+
+    <!-- About Section -->
+    <div class="about-section">
+      <h3>About Me, The Food Enthusiast</h3>
+      <img src="https://www.w3schools.com/w3images/chef.jpg" alt="The Food Enthusiast">
+      <div class="about-content">
+        <h4><b>Passionate About Food</b></h4>
+        <h6><i>Cooking with Love and Creativity</i></h6>
+        <p>I'm a food lover dedicated to sharing delicious recipes and culinary adventures. From hearty comfort foods to delicate desserts, I explore the world of flavors to inspire your kitchen. Join me in celebrating the joy of cooking with fresh ingredients and bold ideas.</p>
+      </div>
+    </div>
+    <hr>
+    
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="footer-column">
+        <h3>FOOTER</h3>
+        <p>Discover new recipes and culinary tips. Follow my journey to bring flavor to every table.</p>
+        <p>Designed with care by Foodie Haven</p>
+      </div>
+      <div class="footer-column">
+        <h3>BLOG POSTS</h3>
+        <ul class="blog-list">
+          <li class="blog-item">
+            <img src="https://www.w3schools.com/w3images/workshop.jpg" alt="Workshop">
+            <div>
+              <span class="large">Summer BBQ Tips</span><br>
+              <span>Grilling secrets revealed</span>
+            </div>
+          </li>
+          <li class="blog-item">
+            <img src="https://www.w3schools.com/w3images/gondol.jpg" alt="Gondol">
+            <span class="large">Italian Feast</span><br>
+            <span>Mastering pasta dishes</span>
+          </li>
+        </ul>
+      </div>
+      <div class="footer-column">
+        <h3>POPULAR TAGS</h3>
+        <div class="tag-list">
+          <span class="tag primary">Recipes</span>
+          <span class="tag">New York</span>
+          <span class="tag">Dinner</span>
+          <span class="tag">Salmon</span>
+          <span class="tag">France</span>
+          <span class="tag">Drinks</span>
+          <span class="tag">Desserts</span>
+          <span class="tag">Flavors</span>
+          <span class="tag">Cuisine</span>
+          <span class="tag">Chicken</span>
+          <span class="tag">Vegan</span>
+          <span class="tag">Grilling</span>
+          <span class="tag">Fish</span>
+          <span class="tag">Pasta</span>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    function openSidebar() {
+      document.getElementById("mySidebar").style.display = "block";
+    }
+    function closeSidebar() {
+      document.getElementById("mySidebar").style.display = "none";
+    }
+  </script>
+</body>
+</html>
