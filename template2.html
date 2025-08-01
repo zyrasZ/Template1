@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Custom Template</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <style>
+    body, h1, h2, h3, h4, h5, h6 {
+      font-family: "Lato", sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+    .navbar, h1, button {
+      font-family: "Montserrat", sans-serif;
+    }
+    .fa-anchor, .fa-coffee {
+      font-size: 200px;
+    }
+
+    /* Navbar Styles */
+    .navbar {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background-color: #f44336;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      z-index: 1000;
+      padding: 8px 0;
+    }
+    .navbar .nav-list {
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 16px;
+    }
+    .nav-item {
+      color: white;
+      text-decoration: none;
+      padding: 12px 16px;
+      display: inline-block;
+    }
+    .nav-item:hover {
+      background-color: #fff;
+      color: #f44336;
+    }
+    .nav-toggle {
+      display: none;
+      color: white;
+      padding: 12px 16px;
+      font-size: 24px;
+      background: none;
+      border: none;
+      cursor: pointer;
+    }
+    .nav-menu {
+      display: flex;
+    }
+    .nav-menu a {
+      display: inline-block;
+    }
+    @media (max-width: 600px) {
+      .nav-toggle {
+        display: block;
+      }
+      .nav-menu {
+        display: none;
+        width: 100%;
+        flex-direction: column;
+        text-align: center;
+      }
+      .nav-menu.active {
+        display: flex;
+      }
+      .nav-item {
+        width: 100%;
+        padding: 16px;
+      }
+    }
+
+    /* Header Styles */
+    .header {
+      background-color: #f44336;
+      text-align: center;
+      padding: 128px 16px;
+      color: white;
+    }
+    .header h1 {
+      margin: 16px 0;
+      font-size: 4rem;
+    }
+    .header p {
+      font-size: 1.5rem;
+      margin-bottom: 16px;
+    }
+    .header button {
+      background-color: #000;
+      color: white;
+      padding: 12px 24px;
+      font-size: 1.2rem;
+      border: none;
+      cursor: pointer;
+    }
+    .header button:hover {
+      background-color: #333;
+    }
+
+    /* Grid Styles */
+    .grid {
+      padding: 64px 16px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .grid-content {
+      display: flex;
+      justify-content: space-between;
+    }
+    .grid-text {
+      flex: 2;
+      padding-right: 32px;
+    }
+    .grid-text h1 {
+      font-size: 2rem;
+      margin-bottom: 16px;
+    }
+    .grid-text h5 {
+      padding: 32px 0;
+      font-size: 1.2rem;
+    }
+    .grid-text p {
+      color: #757575;
+      font-size: 1rem;
+      line-height: 1.6;
+    }
+    .grid-icon {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #f44336;
+    }
+    .grid.light-grey {
+      background-color: #f5f5f5;
+    }
+    @media (max-width: 600px) {
+      .grid-content {
+        flex-direction: column;
+      }
+      .grid-text {
+        padding-right: 0;
+        margin-bottom: 32px;
+      }
+    }
+
+    /* Quote Section */
+    .quote {
+      background-color: #000;
+      color: white;
+      text-align: center;
+      padding: 64px 16px;
+      opacity: 0.9;
+    }
+    .quote h1 {
+      font-size: 1.5rem;
+      margin: 16px 0;
+    }
+
+    /* Footer Styles */
+    .footer {
+      padding: 64px 16px;
+      text-align: center;
+      opacity: 0.9;
+      background-color: #f5f5f5;
+    }
+    .footer .social-icons {
+      font-size: 2rem;
+      padding: 32px 0;
+    }
+    .footer .social-icons i {
+      margin: 0 8px;
+      color: #000;
+    }
+    .footer .social-icons i:hover {
+      opacity: 0.7;
+    }
+    .footer p {
+      font-size: 1rem;
+    }
+    .footer a {
+      color: #000;
+      text-decoration: none;
+    }
+    .footer a:hover {
+      color: #f44336;
+    }
+  </style>
+</head>
+<body>
+
+<!-- Navbar -->
+<div class="navbar">
+  <div class="nav-list">
+    <div class="nav-menu" id="navDemo">
+      <a href="#" class="nav-item">Home</a>
+      <a href="#" class="nav-item">Link 1</a>
+      <a href="#" class="nav-item">Link 2</a>
+      <a href="#" class="nav-item">Link 3</a>
+      <a href="#" class="nav-item">Link 4</a>
+    </div>
+  </div>
+</div>
+
+<!-- Header -->
+<header class="header" id="home">
+  <h1 class="w3-margin w3-jumbo">START PAGE</h1>
+  <p class="w3-xlarge">Template by w3.css</p>
+  <button class="w3-button w3-black w3-padding-large w3-large w3-margin-top">Get Started</button>
+</header>
+
+<!-- First Grid -->
+<div class="grid" id="link1">
+  <div class="grid-content">
+    <div class="grid-text">
+      <h1>Lorem Ipsum</h1>
+      <h5 class="w3-padding-32">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</h5>
+      <p class="w3-text-grey">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+    </div>
+    <div class="grid-icon">
+      <i class="fa fa-anchor w3-padding-64 w3-text-red"></i>
+    </div>
+  </div>
+</div>
+
+<!-- Second Grid -->
+<div class="grid light-grey" id="link2">
+  <div class="grid-content">
+    <div class="grid-icon">
+      <i class="fa fa-coffee w3-padding-64 w3-text-red w3-margin-right"></i>
+    </div>
+    <div class="grid-text">
+      <h1>Lorem Ipsum</h1>
+      <h5 class="w3-padding-32">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</h5>
+      <p class="w3-text-grey">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+    </div>
+  </div>
+</div>
+
+<!-- Quote Section -->
+<div class="quote" id="link3">
+  <h1 class="w3-margin w3-xlarge">Quote of the day: live life</h1>
+</div>
+
+<!-- Footer -->
+<footer class="footer" id="link4">
+  <div class="social-icons">
+    <i class="fa fa-facebook-official w3-hover-opacity"></i>
+    <i class="fa fa-instagram w3-hover-opacity"></i>
+    <i class="fa fa-snapchat w3-hover-opacity"></i>
+    <i class="fa fa-pinterest-p w3-hover-opacity"></i>
+    <i class="fa fa-twitter w3-hover-opacity"></i>
+    <i class="fa fa-linkedin w3-hover-opacity"></i>
+  </div>
+  <p>Powered by <a href="https://www.w3schools.com/w3css/default.asp" target="_blank">w3.css</a></p>
+</footer>
+
+</body>
+</html>
